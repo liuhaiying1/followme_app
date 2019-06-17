@@ -258,7 +258,6 @@
 
         return fn(data);
     }
-    
 
     template.config = function (option) {
         if (isObject(option)) {

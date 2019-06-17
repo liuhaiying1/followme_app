@@ -2,10 +2,10 @@
 
 
 /*URL配置*/
-var _base_ip = "192.168.1.110";
+var _base_ip = "192.168.1.108";
 
 var _base_port = "8080";
-var _base_url = "http://" + _base_ip + ":" + _base_port;			//http:192.168.1.111:8080/
+var _base_url = "http://" + _base_ip + ":" + _base_port;			//http:192.168.1.111:8080
 
 //账号登录
 var _accountLogin_url = _base_url + "/followme/account/login/accountLogin";		

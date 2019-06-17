@@ -1,6 +1,20 @@
 var _userinfo;
 var isfromloginsuccess = false;
 
+//刷新资料
+document.addEventListener('update-profile-success', function(event) {
+	console.log("进入更新资料方法");
+	baseinfo.login = true;
+	isfromloginsuccess = true;
+	//getUserProfile();
+})
+
+//退出登录
+document.addEventListener('logout-event', function(event) {
+	baseinfo.login = false;
+	location.reload();
+})
+
 var baseinfo = new Vue({
 	el: '#user-baseinfo-id',
 	data: {
@@ -39,10 +53,8 @@ mui.plusReady(function() {
 		openNewPage('profile-setting.html', '设置', true);
 	})
 } else {
+	console.log("进入未登录，登录界面的方法");
 	document.getElementById('user-login-id').addEventListener('tap', function() {
-		if(userHasLogined()) {
-			return;
-		}
 		openNewPage('login.html', '登录', true);
 	})
 }
@@ -79,19 +91,7 @@ function getUserProfile() {
 	_userinfo = localStorage.getItem('loginuserinfo');
 	baseinfo.islogined();
 	baseinfo.item = localStorage.getItem('loginuserinfo');
-
 }
 
 
 
-//刷新资料
-document.addEventListener('update-profile-success', function(event) {
-	isfromloginsuccess = true;
-	getUserProfile();
-})
-
-//退出登录
-document.addEventListener('logout-event', function(event) {
-	baseinfo.login = false;
-	location.reload();
-})

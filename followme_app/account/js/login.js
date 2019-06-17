@@ -27,7 +27,7 @@ var loginV = new Vue({
 							}*/
 
 			if(pwd.length < 6) {
-				plus.nativeUI.toast('请输入正确的密码');
+				plus.nativeUI.toast('请输入正确的密码,密码不少于6位');
 				return;
 			}
 			// /^1[0-9]{10}$/

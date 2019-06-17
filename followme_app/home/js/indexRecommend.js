@@ -16,6 +16,11 @@ mui.plusReady(function() {
 	pullupRefresh();
 })
 
+window.addEventListener('refresh', function(event) {  
+    pullupRefresh();  
+});  
+
+
 /**
  * 上拉加载具体业务实现
  */

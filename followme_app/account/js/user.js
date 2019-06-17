@@ -5,8 +5,6 @@
 //用户ID
 function getLoginUid() {
 	var u_Obj = this.getUserInfo();
-	//var jsonObj = eval(u);
-	//var u_Obj = eval("(" + u + ")");
 	if(!u_Obj) {
 		return;
 	}
@@ -32,7 +30,6 @@ function userHasLogined() {
 function getUserInfo() {
 	var s = localStorage.getItem('loginuserinfo');
 	var u = JSON.parse(s);
-	console.log("用户信息第一步：", u);
 	return u;
 }
 

@@ -65,7 +65,9 @@ if(userHasLogined()) {
 			}]
 		}, function(e) {
 			if(e.index == 1) {
+				console.log("点击退出登录按钮");
 				var wv = plus.webview.getWebviewById('profile.html');
+
 				localStorage.setItem('loginuserinfo', '{}');
 
 				mui.fire(wv, 'logout-event', {});

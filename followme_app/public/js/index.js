@@ -111,4 +111,3 @@ document.addEventListener('gohome', function() {
 		defaultTab.classList.add('mui-active');
 	}
 });
-

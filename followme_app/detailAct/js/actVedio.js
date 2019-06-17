@@ -1,19 +1,14 @@
-var srcVideo='';
 var actID = null;
 //mui初始化
 mui.init();
 //mui加载框架元素成功之后执行此函数
 mui.plusReady(function() {
-    
+
 	var _self = plus.webview.currentWebview();
 	actID = _self.actID;
-	console.log("video");
-	console.log("Video页面接收的id:",actID);
-	
+
 	pullupRefresh();
-	
-	
-	
+
 });
 
 function pullupRefresh() {
@@ -38,20 +33,18 @@ function pullupRefresh() {
 				console.log(data.code);
 				var content = ''
 				if(data.code == 200) { //查询成功
- 					document.getElementById("videoPath").src = _base_url + data.obj.vedioPath;
 					console.log(_base_url + data.obj.vedioPath);
-					/*document.getElementById("videoPath").play();*/
-					/*srcVideo=_base_url + data.obj.vedioPath;*/
+					createVideoPlayer(_base_url + data.obj.vedioPath);
 					$("#beginTime").text(transformTime(data.obj.beginTime = +new Date()));
 					$("#clubName").text(data.obj.clubName);
-					$("#lookDetail").val(data.obj.description)/*  模态框*/
+					$("#lookDetail").val(data.obj.description) //模态框
 					$("#beginCity").text(data.obj.beginCity);
-					$("#actCost").text('￥'+data.obj.actCost);
-				/*	createVideoPlayer(srcVideo);*/
+					$("#actCost").text('￥' + data.obj.actCost);
+
 
 				}
-					//判断是否还有数据,若小于每次加载条数,结束
-					//每次加载结束之后，如果还有数据则++,查询下一页数据
+				//判断是否还有数据,若小于每次加载条数,结束
+				//每次加载结束之后，如果还有数据则++,查询下一页数据
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
 				console.log("请求失败!!！" + textStatus);
@@ -61,70 +54,59 @@ function pullupRefresh() {
 }
 
 function transformTime(timestamp = +new Date()) {
-    if (timestamp) {
-        var time = new Date(timestamp);
-        var y = time.getFullYear();
-        var M = time.getMonth() + 1;
-        var d = time.getDate();
-        var h = time.getHours();
-        var m = time.getMinutes();
-        var s = time.getSeconds();
-        return y + '-' + addZero(M) + '-' + addZero(d);
-      } else {
-          return '';
-      }
+	if(timestamp) {
+		var time = new Date(timestamp);
+		var y = time.getFullYear();
+		var M = time.getMonth() + 1;
+		var d = time.getDate();
+		var h = time.getHours();
+		var m = time.getMinutes();
+		var s = time.getSeconds();
+		return y + '-' + addZero(M) + '-' + addZero(d);
+	} else {
+		return '';
+	}
 }
+
 function addZero(m) {
-    return m < 10 ? '0' + m : m;
+	return m < 10 ? '0' + m : m;
 }
 transformTime(); // "2018-08-08"
 
-function detail(){
-	var lookDet=document.getElementById("lookDetail");
+function detail() {
+	var lookDet = document.getElementById("lookDetail");
 	mui.alert(lookDet.value);
 }
 
-/*视频播放全屏*/
-/*function getreqfullscreen (root) {
-    var root = document.documentElement
-    return root.requestFullscreen || root.webkitRequestFullscreen || root.mozRequestFullScreen || root.msRequestFullscreen
-}
-var fullscreen = getreqfullscreen();
-function full() {
-    fullscreen.call(document.getElementById("videoPath"));
-}*/
 
-
-	var video = document.getElementById("videoPath");
-    video.onclick = function() {
-        if(video.paused){  
-            video.play();    
-        }else{
-            video.pause();
-        }
-    }
-
-
-
+var videoPlayer = null;
 // 创建视频播放控件
-/*var player = null;
-	function createVideoPlayer(srcVideo) {
-		console.log("视频："+srcVideo);
-		if(!player){
-			player = plus.video.createVideoPlayer('videoplayer', {
-				'src':srcVideo,
-				'top':'0px',
-				'left':'0px',
-				'width': '100%',
-				'height': '100%',
-				'initial-time':'59.547001',
-				'autoplay':'true'
-				
-			});
-		plus.webview.currentWebview().append(player);
-		console.log("视频1："+srcVideo);
-		player.addEventListener('timeupdate', function(e){
-			console.log(JSON.stringify(e));
-		}, false);
-		}
-	}*/
+function createVideoPlayer(videoPath) {
+	if(!videoPlayer) {
+		videoPlayer = plus.video.createVideoPlayer('videoplayer', {
+			src: videoPath,
+			width: '100%',
+			height: '50%',
+			position: 'static',
+			autoplay: true
+		});
+		plus.webview.currentWebview().append(videoPlayer);
+	}
+
+}
+
+// 查找视频播放控件,进行更换视频
+function findVideoPlayer(videoPath) {
+	var b = plus.video.getVideoPlayerById('videoplayer');
+	if(b) {
+		console.log('find success!');
+		alert('success');
+	} else {
+		console.log('find failed!');
+		alert('failed');
+	}
+	b.setStyles({
+		src: videoPath 			//'http://chimee.org/vod/1.mp4'
+	});
+}
+

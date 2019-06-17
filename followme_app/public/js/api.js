@@ -80,9 +80,8 @@ function _ajax (type , url , pars , success , error){
 			timeout:20000,
 			
 			success:function(data){
-				console.log("登录返回信息：",data);
 				if('200' == data.status) {
-					success(data);			// data
+					success(data);						// data
 				}else{
 					if(error){
 						error(data['msg'] || '服务器返回错误');	

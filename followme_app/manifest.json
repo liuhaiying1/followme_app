@@ -130,11 +130,36 @@
 		"pages": {
 			"index.html": {
 				"resources": [
-					"home/recommend.html"
+					"home/recommend.html",
+					"home/home.html"
 				],
 				"refer": [
 					"account/me.html",
-					"message/message.html"
+					"message/message.html",
+					"account/profile.html"
+				],
+				"priority": 0
+			},
+			"home/home.html": {
+				"resources": [
+					"home/indexRecommend.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"home/indexRecommend.html": {
+				"resources": [],
+				"refer": [
+					"detailAct/detailMain.html"
+				],
+				"priority": 0
+			},
+			"detailAct/detailMain.html": {
+				"resources": [
+					"detailAct/actDetail.html"
+				],
+				"refer": [
+					"detailAct/actVideo.html"
 				],
 				"priority": 0
 			}

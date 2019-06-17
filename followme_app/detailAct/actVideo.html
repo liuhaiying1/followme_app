@@ -9,13 +9,27 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link href="../public/css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="css/actVideo.css" />
-		
+		<link rel="stylesheet" href="../public/video/chimee-mobile-player/chimee-mobile-player.browser.css" />
+
 		<title>视屏页面</title>
+
+		<script src="../public/js/mui.min.js" type="text/jscript" charset="UTF-8"></script>
+
+		<script src="../public/js/appconstant.js" type="text/jscript" charset="UTF-8"></script>
+		<script src="../public/jquery/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/actVedio.js" type="text/javascript" charset="utf-8"></script>
+
 	</head>
 
 	<body>
-		
-			<div id="video_content" class="mui-content ">
+		<div id="content" style="position: relative;">
+			<!--上部的播放视频部分-->
+			<div id="video">
+				<div id="videoPlayer"></div>
+			</div>
+
+			<div id="descript">
+
 				<!--				<div id="exit">
 					<img src="../images/exit.png" />
 				</div>-->
@@ -41,19 +55,13 @@
 					<img src="../images/share.png" />
 				</div>
 
-				<video id="videoPath"  loop="loop" autoplay="true" preload="auto" webkit-playsinline="true"  playsinline="true"  x-webkit-airplay="allow"  >
-					<source src="" type="video/mp4"  >
-				</video>
+
 			</div>
+
+		</div>
+
+
 	</body>
 
-
-	
-	<script src="../public/js/mui.min.js" type="text/jscript" charset="UTF-8"></script>
-	<script src="../public/js/appconstant.js" type="text/jscript" charset="UTF-8"></script>
-	<!--<script src="../public/jquery/jquery-1.9.1.js" type="text/javascript" charset="utf-8"></script>-->
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-	<script src="js/upAndDown.js" type="text/javascript" charset="utf-8"></script>
-	<script src="js/actVedio.js" type="text/javascript" charset="utf-8"></script>
 
 </html>

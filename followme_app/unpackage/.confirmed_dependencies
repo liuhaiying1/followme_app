@@ -1,12 +1,35 @@
 {
-  "index.html": {
-    "resources": [
-      "home/home.html"
-    ],
-    "refer": [
-      "home/home.html",
-      "account/me.html",
-      "message/message.html"
-    ]
-  }
+	"index.html": {
+		"resources": [
+			"home/home.html"
+		],
+		"refer": [
+			"home/home.html",
+			"account/me.html",
+			"message/message.html",
+			"account/profile.html"
+		]
+	},
+	"home/home.html": {
+		"resources": [
+			"home/indexRecommend.html"
+		],
+		"refer": [
+			"home/indexRecommend.html"
+		]
+	},
+	"home/indexRecommend.html": {
+		"refer": [
+			"detailAct/detailMain.html"
+		]
+	},
+	"detailAct/detailMain.html": {
+		"resources": [
+			"detailAct/actDetail.html"
+		],
+		"refer": [
+			"detailAct/actDetail.html",
+			"detailAct/actVideo.html"
+		]
+	}
 }
